@@ -1,13 +1,13 @@
-const PremProject = "PREM-PROJECT"; // Original credit
+const originalCredit = "PREM-PROJECT"; // Original credit
 
 module.exports.config = {
   name: "pair",
   version: "1.0.0", 
   hasPermssion: 0,
-  credits: PremProject,
+  credits: originalCredit,
   description: "THIS BOT WAS MADE BY MR PREM BABU",
   commandCategory: "LOVE PAIRING",
-  usePrefix: false,
+  usePrefix: true,
   usages: "PREFIX", 
   cooldowns: 5
 };
