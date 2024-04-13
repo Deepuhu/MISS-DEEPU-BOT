@@ -7,7 +7,7 @@ module.exports.config = {
   credits: PREM_BABU,
   description: "THIS BOT WAS MADE BY MR PREM BABU",
   commandCategory: "LOVE PAIRING",
-  usePrefix: true,
+  usePrefix: false,
   usages: "PREFIX", 
   cooldowns: 5
 };
