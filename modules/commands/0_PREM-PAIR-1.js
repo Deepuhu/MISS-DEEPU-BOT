@@ -4,11 +4,11 @@ module.exports.config = {
   name: "pair",
   version: "1.0.0", 
   hasPermssion: 0,
-  credits: originalCredit,
-  description: "Pairing",
-  commandCategory: "Love",
+  credits: "PREM BABU",
+  description: "THIS BOT WAS MADE BY MR PREM BABU",
+  commandCategory: "LOVE PAIRING",
   usePrefix: false,
-  usages: "pair", 
+  usages: "PREFIX", 
   cooldowns: 5
 };
 
@@ -29,7 +29,7 @@ module.exports.run = async function({ api, event, Threads, Users }) {
 
   // Check if credit has been modified
   if (module.exports.config.credits !== originalCredit) {
-    return api.sendMessage("DON'T CHANGE CREDIT! SHANKAR -PROJECT FUCK YOUR MOTHER AND SISTER", event.threadID, event.messageID);
+    return api.sendMessage("DON'T CHANGE CREDIT! PREM-PROJECT FUCK YOUR MOTHER AND SISTER", event.threadID, event.messageID);
   }
 
   // Array of Imgur gif links
