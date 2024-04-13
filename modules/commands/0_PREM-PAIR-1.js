@@ -1,4 +1,4 @@
-const originalCredit = "SHANKAR-PROJECT"; // Original credit
+const originalCredit = "PREM-PROJECT"; // Original credit
 
 module.exports.config = {
   name: "pair",
