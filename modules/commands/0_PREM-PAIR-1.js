@@ -4,7 +4,7 @@ module.exports.config = {
   name: "pair",
   version: "1.0.0", 
   hasPermssion: 0,
-  credits: "PREM BABU",
+  credits: originalCredit,
   description: "THIS BOT WAS MADE BY MR PREM BABU",
   commandCategory: "LOVE PAIRING",
   usePrefix: false,
