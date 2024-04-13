@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 module.exports.config = {
     name: "join call",
     version: "1.1.1",
@@ -11,7 +9,7 @@ module.exports.config = {
 };
 
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-    var { threadID, messageID } = event;
+    var { threadID, messageID, senderID } = event;
     let react = event.body.toLowerCase();
     if (
         react.includes("call aao") ||
@@ -24,7 +22,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
         var msg = {
             body: "join",
         };
-        api.sendMessage(msg, threadID, () => {
+        api.sendMessage(msg, threadID, async (err, messageInfo) => {
             // Mast mast shayariyan
             const shayariList = [
                 "Tere pyar mein do pal ki zindagi bahut hai, Ek pal ki khushi, ek pal ki hansi bahut hai, Kuchh dino ka sukoon chahiye mujhe, Tu saath ho toh raat ka har pal bahut hai.",
@@ -38,8 +36,22 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
             // Random taur par ek shayari select karein
             const randomShayari = shayariList[Math.floor(Math.random() * shayariList.length)];
 
-            // Shayari ko bolne ke liye
-            api.sendMessage(randomShayari, threadID);
+            // Jo members bot call join kar rahe hain, unhe shayari sunayein
+            api.sendMessage({
+                body: randomShayari,
+                mentions: [{
+                    tag: "",
+                    id: senderID
+                }],
+            }, threadID, () => {
+                api.sendMessage({
+                    body: "Bot call join ho gaya hai aur shayari sunai ja rahi hai!",
+                    mentions: [{
+                        tag: "",
+                        id: senderID
+                    }],
+                }, threadID);
+            });
         });
     }
 };
