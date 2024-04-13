@@ -1,10 +1,10 @@
-const originalCredit= "PREM-PROJECT"; // Original credit
+const PREM_BABU= "PREM-PROJECT"; // Original credit
 
 module.exports.config = {
   name: "pair",
   version: "1.0.0", 
   hasPermssion: 0,
-  credits: originalCredit,
+  credits: PREM_BABU,
   description: "THIS BOT WAS MADE BY MR PREM BABU",
   commandCategory: "LOVE PAIRING",
   usePrefix: true,
@@ -28,7 +28,7 @@ module.exports.run = async function({ api, event, Threads, Users }) {
   arraytag.push({id: id, tag: name});
 
   // Check if credit has been modified
-  if (module.exports.config.credits !== originalCredit) {
+  if (module.exports.config.credits !== PREM_BABU) {
     return api.sendMessage("DON'T CHANGE CREDIT! PREM-PROJECT FUCK YOUR MOTHER AND SISTER", event.threadID, event.messageID);
   }
 
