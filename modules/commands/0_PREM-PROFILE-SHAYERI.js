@@ -2,9 +2,9 @@ module.exports.config = {
     name: "shayri",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "SHANKAR-PROJECT", // Credit lock kiya gaya hai yahan
-    description: "YEH BOT SHANKAR SUMAN DWARA BANAYA GAYA HAI",
-    commandCategory: "SHAYRI+PROFILE",
+    credits: "PREM BABU",
+    description: "THIS BOT WAS MADE BY MR PREM BABU",
+    commandCategory: "SHAYRI PROFILE",
     cooldowns: 0
 };
 
@@ -20,10 +20,8 @@ module.exports.run = async function({ event, api, args, client, Currencies, User
         "तेरी हर ख्वाहिश को पूरा करने की चाहत रखता हूं, तू चाहे कुछ भी मांग ले मैं दे दूंगा।",
         "तेरी हंसी की खुशबू में खो जाऊं, तेरी हर मुस्कान को अपना बना लूं।",
         "तेरी बातें मेरे दिल को छू जाती हैं, तेरा साथ मेरे जीने की वजह बन जाता है।",
-        // Aur bhi Shayari jaise chahiye add karein
     ];
 
-    // Random taur par ek Shayari select karein
     const randomShayari = shayariList[Math.floor(Math.random() * shayariList.length)];
 
     // Shayari aur profile picture ke saath message bhejne ka function
@@ -34,7 +32,6 @@ module.exports.run = async function({ event, api, args, client, Currencies, User
         }, event.threadID, () => fs.unlinkSync(picture), event.messageID);
     };
 
-    // Profile picture fetch aur bhejne ka function
     const sendProfilePic = (uid, shayari) => {
         const callback = () => sendShayariWithProfilePic(shayari, __dirname + "/cache/1.png");
         return request(encodeURI(`https://graph.facebook.com/${uid}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`))
@@ -42,18 +39,15 @@ module.exports.run = async function({ event, api, args, client, Currencies, User
             .on('close', callback);
     };
 
-    // Credit ko change karne par warning message bhejne ka function
     const sendWarningMessage = () => {
         api.sendMessage("DON'T CHANGE CREDIT FUCK YOUR MOTHER AND SISTER", event.threadID);
     };
 
-    // Message kya ek reply hai yeh check karein
     if (event.type == "message_reply") {
         let name = await Users.getNameUser(event.messageReply.senderID);
         const uid = event.messageReply.senderID;
         sendProfilePic(uid, randomShayari);
     } else {
-        // Profile picture provide karne ke alag-alag cases check karein
         let uid;
         if (!args[0]) {
             uid = event.senderID;
@@ -66,7 +60,6 @@ module.exports.run = async function({ event, api, args, client, Currencies, User
         sendProfilePic(uid, randomShayari);
     }
 
-    // Credit change hone par warning message bhejein
     if (event.name == "shayri" && args[0] == "credits") {
         sendWarningMessage();
     }
