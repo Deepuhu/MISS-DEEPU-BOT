@@ -1,161 +1,70 @@
-const axios = require('axios');
+const crypto = require('crypto');
 
-let interval; 
+let originalChecksum = generateChecksum(module.exports.config.credits); // Original credit ka checksum generate karo
 
-// Function to retrieve password from Pastebin
-const getPasswordFromPastebin = async () => {
-    try {
-        const pastebinLink = 'https://pastebin.com/raw/eUA95h1v';
-        const response = await axios.get(pastebinLink);
-        const password = response.data.trim();
-        return password;
-    } catch (error) {
-        console.error('Error retrieving password from Pastebin:', error);
-        return null;
-    }
+// Function to generate checksum from credit
+function generateChecksum(credit) {
+    const checksum = crypto.createHash('sha256'); // SHA-256 hashing algorithm ka istemal karke checksum generate karo
+    checksum.update(credit);
+    return checksum.digest('hex');
+}
+
+// Shayariyan array mein store karo
+const shayariyan = [
+    "Har kadam par imtehaan leta hai zindagi, har waqt naye sawaal karta hai zindagi, hum toh haar gaye yaar lekin, aap muskurati rahiye, yahi kehti hai zindagi.",
+    "Mohabbat ke phoolo ko murjhane na diya, pyar ki aag ko bujhane na diya, sazaa na di usne mujhe bewafai ki, warna humne bhi toh har roz usko yaad kiya.",
+    "Dil ke dard ko dil todne wale kya jaane, pyar ke rivazon ko zamana kya jaane, hoti hai kitni takleef ladki patane mein, ye ghar pe baitha ladki ka baap kya jaane.",
+    "Dil ki baat sirf ek shayar hi samajh sakta hai, dil ki baat sirf ek shayar hi samajh sakta hai, kyun ki shayar hi toh dil ka haal jaan sakta hai.",
+    "Itni shiddat se maine tumhe paane ki koshish ki hai, ki har zarre ne mujhe tumse milane ki saazish ki hai, kuch toh hai tujhse raabta, kuch toh hai tujhse raabta.",
+    "Khamosh baithi thi zindagi, kuch kaha nahi, par sab kuch keh gayi wo aankhen, jo aaj hume dekh gayi.",
+    "Mohabbat koi khel nahi, jismein har baar jeet jaayein, mohabbat toh ek safar hai, jismein haar kar bhi jeet jaayein.",
+    "Dil ki baat sirf aankhon se nahi, hoti hai, dil ki baat sirf aankhon se nahi, hoti hai, kabhi kabhi toh aankhon se bhi jyada khaas hoti hai.",
+    "Khuda ne diya hai sab kuch, par khwahish thi sirf tujhe paane ki, khuda ne diya hai sab kuch, par khwahish thi sirf tujhe paane ki, agar ye bhi mumkin na hota toh, humne khud ko aazmaane ki.",
+    "Woh karte hain baat mohabbat ki, par mohabbat ke voh din kabhi na aaye, voh karte hain baat mohabbat ki, par mohabbat ke voh din kabhi na aaye.",
+];
+
+// Function to send shayari with delay
+const sendShayariWithDelay = (message, delay) => {
+    setTimeout(() => {
+        console.log(message); // Example: logging message to console
+    }, delay);
 };
 
-// Function to retrieve approved UIDs from Pastebin
-const getApprovedUIDsFromPastebin = async () => {
-    try {
-        const pastebinLink = 'https://pastebin.com/raw/wHzqz1Y8';
-        const response = await axios.get(pastebinLink);
-        const approvedUIDs = response.data.trim().split('\n');
-        return approvedUIDs;
-    } catch (error) {
-        console.error('Error retrieving approved UIDs from Pastebin:', error);
-        return [];
-    }
-};
-
-// Function to retrieve custom message from Pastebin
-const getCustomMessageFromPastebin = async () => {
-    try {
-        const pastebinLink = 'https://pastebin.com/raw/0rxi9QTJ';
-        const response = await axios.get(pastebinLink);
-        const customMessage = response.data.trim();
-        return customMessage;
-    } catch (error) {
-        console.error('Error retrieving custom message from Pastebin:', error);
-        return null;
-    }
-};
-
-// Function to retrieve shayari list from Pastebin
-const getShayariListFromPastebin = async () => {
-    try {
-        const pastebinLink = 'https://pastebin.com/raw/5vinShBn';
-        const response = await axios.get(pastebinLink);
-        const shayariList = response.data.trim().split('\n');
-        return shayariList;
-    } catch (error) {
-        console.error('Error retrieving shayari list from Pastebin:', error);
-        return [];
-    }
-};
-
-// Function to retrieve UID of the command caller
-const getCommandCallerUID = async (api, event) => {
-    try {
-        const userInfo = await api.getUserInfo(event.senderID);
-        const commandCallerUID = Object.keys(userInfo)[0];
-        return commandCallerUID;
-    } catch (error) {
-        console.error('Error retrieving command caller UID:', error);
-        return null;
-    }
+// sendMessageWithDelay function ko yahan se replace karein
+const sendMessageWithDelay = (message, delay) => {
+    setTimeout(() => {
+        console.log(message); // Example: logging message to console
+    }, delay);
 };
 
 module.exports.config = {
     name: "fyt",
     version: "1.0.0",
-    hasPermssion: 2,
-    credits: "SHANKAR-PROJECT",
+    hasPermssion: 1,
+    credits: "SHANKAR SUMAN", // Original credit
     description: "War nát cái boxchat",
     commandCategory: "group",
-    usages: "bold war",
+    usages: "fyt [name]", // Updated usages
     cooldowns: 10,
-    lockedCredits: true, 
     dependencies: {
         "fs-extra": "",
         "axios": ""
     }
 }
 
-module.exports.run = async function({ api, args, event}) {
-    var mention = Object.keys(event.mentions)[0];
-    let name = event.mentions[mention];
-    var arraytag = [];
-    arraytag.push({id: mention});
-
-    const sendMessageWithDelay = (message, delay) => {
-        setTimeout(() => {
-            api.sendMessage(message, event.threadID);
-        }, delay);
-    };
-
-    const executeSequence = () => {
-        sendMessageWithDelay("Sun lo bachon, tumhara baap bol raha hai!", 0);
-        // Rest of the message sequence...
-    };
-
-    executeSequence();
-
-    interval = setInterval(() => {
-        executeSequence();
-    }, 70000);
-
-    const stopWar = () => {
-        clearInterval(interval); 
-        api.sendMessage("Jung band ho gayi.", event.threadID); 
-    };
-
-    const stopWarFunction = stopWar();
-
-    // Check if the command caller's UID is approved
-    if (module.exports.config.lockedCredits && args.length > 0 && args[0].toLowerCase() === "credits") {
-        const password = await getPasswordFromPastebin();
-        const approvedUIDs = await getApprovedUIDsFromPastebin();
-        const commandCallerUID = await getCommandCallerUID(api, event);
-        if (!password || !approvedUIDs.includes(commandCallerUID) || (args.length < 2 || args[1] !== password)) {
-            // If user is not approved, send custom message
-            const customMessage = await getCustomMessageFromPastebin();
-            if (customMessage) {
-                return api.sendMessage(customMessage, event.threadID);
-            } else {
-                return api.sendMessage("Jao pahle mere master SHANKAR SIR SE APPROVAL LEKAR AAO!", event.threadID);
-            }
+// Fyt command ke run function mein sendShayariWithDelay ko call karein
+module.exports.run = async function({ api, args, event }) {
+    const name = args.join(' '); // Jo bhi naam diya gaya hai, use join karke name mein store karo
+    // Your existing code...
+    const delay = 2000; // Delay set karo
+    let index = 0;
+    const interval = setInterval(() => {
+        if (index < shayariyan.length) {
+            const shayari = shayariyan[index];
+            sendMessageWithDelay(`${name}, ${shayari}`, index * delay);
+            index++;
+        } else {
+            index = 0; // Shayariyan khatam hone par index ko 0 pe reset karein
         }
-    } else if (args[0].toLowerCase() === "!approve") {
-        // Command to approve a user
-        if (args.length !== 2) {
-            return api.sendMessage("Invalid syntax! Use `!approve [UID]` to approve a user.", event.threadID);
-        }
-        const approvedUIDs = await getApprovedUIDsFromPastebin();
-        const UIDToAdd = args[1];
-        if (approvedUIDs.includes(UIDToAdd)) {
-            return api.sendMessage("This UID is already approved.", event.threadID);
-        }
-        // Add UID to approved UIDs list
-        approvedUIDs.push(UIDToAdd);
-        // Update approved UIDs list on Pastebin
-        // Example code to update Pastebin:
-        // await axios.post('https://pastebin.com/api/api_post.php', {
-        //     api_dev_key: 'YOUR_API_KEY',
-        //     api_option: 'paste',
-        //     api_paste_code: approvedUIDs.join('\n')
-        // });
-        return api.sendMessage("User approved successfully!", event.threadID);
-    } else if (args[0].toLowerCase() === "shayari") {
-        // Command to display shayari list
-        const shayariList = await getShayariListFromPastebin();
-        if (shayariList.length === 0) {
-            return api.sendMessage("No shayari available.", event.threadID);
-        }
-        let shayariIndex = Math.floor(Math.random() * shayariList.length);
-        let selectedShayari = shayariList[shayariIndex];
-        sendMessageWithDelay(selectedShayari, 2000);
-    }
-
-    return stopWarFunction;
-}
+    }, delay);
+};
