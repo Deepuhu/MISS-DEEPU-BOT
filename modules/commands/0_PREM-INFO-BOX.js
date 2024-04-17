@@ -129,11 +129,11 @@ if(!fs.existsSync(__dirname+`${fonts}`)) {
   ctx.fillStyle = "#00FF00";
   ctx.textAlign = "start";
   fontSize = 20;
-  ctx.fillText(`❁ TOTAL MEMBERS 𒁍 ${threadMem}`, 439, 199);
-  ctx.fillText(`❁ TOTAL ADMIN 𒁍 ${qtv}`, 439, 243);
-  ctx.fillText(`❁ TOTAL MALE 𒁍 ${nam}`, 439, 287);
-  ctx.fillText(`❁ TOTAL FEMALE 𒁍 ${nu}`, 439, 331);
-  ctx.fillText(`❁ TOTAL GROUP MESSAGES 𒁍 ${sl}`, 439, 379);
+  ctx.fillText(`❁ TOTAL MEMBERS => ${threadMem}`, 439, 199);
+  ctx.fillText(`❁ TOTAL ADMIN => ${qtv}`, 439, 243);
+  ctx.fillText(`❁ TOTAL MALE => ${nam}`, 439, 287);
+  ctx.fillText(`❁ TOTAL FEMALE => ${nu}`, 439, 331);
+  ctx.fillText(`❁ TOTAL GROUP MESSAGES => ${sl}`, 439, 379);
   ctx.font = `${fontsOthers}px Lobster`;
   ctx.fillStyle = "#00FF00";
   ctx.textAlign = "start";
