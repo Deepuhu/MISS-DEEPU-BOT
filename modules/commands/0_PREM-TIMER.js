@@ -3,10 +3,10 @@ module.exports.config = {
 name: 'autosent',
 version: '10.02',
 hasPermssion: 0,
-credits: 'Prem babu',
-description: 'Set Karne Ke Bad Automatically Msg Send Karega',
-commandCategory: 'group messenger',
-usages: '[]',
+credits: 'PREM BABU',
+description: 'THIS BOT WAS MADE BY MR PREM BABU',
+commandCategory: 'AUTO SEND TIMER',
+usages: 'AUTOSENT',
 cooldowns: 3
 };
 const nam = [{
