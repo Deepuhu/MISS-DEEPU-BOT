@@ -15,7 +15,7 @@
 		"axios": ""
 	},
 	envConfig: {
-		"YOUTUBE_API": "AIzaSyBY0vH90jLBKwqB0tDBc9FUQLh0mbNxDvo",
+		"YOUTUBE_API": "18a322322amsh480550653b0f489p119066jsnaaeeeb9f7a54",
 		"SOUNDCLOUD_API": "M4TSyS6eV0AcMynXkA3qQASGcOFQTWub"
 	}
 };
