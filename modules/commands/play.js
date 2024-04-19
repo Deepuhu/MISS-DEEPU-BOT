@@ -1,5 +1,5 @@
   module.exports.config = {
-	name: "music",
+	name: "play",
 	version: "1.0.5",
 	hasPermssion: 0,
 	credits: "Mirai Team",
