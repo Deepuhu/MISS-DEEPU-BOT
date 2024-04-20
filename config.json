@@ -25,6 +25,7 @@
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
+    "api": "https://noobs-api.onrender.com/dipto",
     "BOTNAME": "TAKLU BABU",
     "PREFIX": "#",
     "OTHERBOT": [
