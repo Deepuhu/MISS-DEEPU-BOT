@@ -14,10 +14,10 @@ module.exports.onLoad = function () {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { join } = global.nodemodule["path"];
 
-  const path = join(__dirname, "PREM BABU", "PREM-LEAVEING");
+  const path = join(__dirname, "PREM BABU");
   if (existsSync(path)) mkdirSync(path, { recursive: true });	
 
-  const path2 = join(__dirname, "PREM BABU", "PREM-LEAVEING", "PREM-GIF-2");
+  const path2 = join(__dirname, "PREM BABU", "PREM-02");
     if (!existsSync(path2)) mkdirSync(path2, { recursive: true });
 
     return;
@@ -34,7 +34,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
   const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
   const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
   const type = (event.author == event.logMessageData.leftParticipantFbId) ? "खुद ही भाग गया 😐👈" : "एडमिन ने गुस्से में निकाल दिया 😑👈";
-  const path = join(__dirname, "PREM BABU", "PREM-LEAVEING","PREM-GIF-2");
+  const path = join(__dirname, "PREM BABU", "PREM-02");
   const pathGif = join(path, `${threadID}.mp4`);
   var msg, formPush
 
@@ -45,11 +45,11 @@ module.exports.run = async function({ api, event, Users, Threads }) {
     hours > 10 && hours <= 12 ? "GOOD AFTERNOON" :
     hours > 12 && hours <= 18 ? "GOOD EVENING" : "GOOD NIGHT").replace(/\{time}/g, time);  
 
-  const randomPath = readdirSync(join(__dirname, "PREM BABU", "PREM-LEAVEING", "PREM-GIF-2"));
+  const randomPath = readdirSync(join(__dirname, "PREM BABU", "PREM-02"));
 
   if (existsSync(pathGif)) formPush = { body: msg, attachment: createReadStream(pathGif) }
   else if (randomPath.length != 0) {
-    const pathRandom = join(__dirname, "PREM BABU", "PREM-LEAVEING", "PREM-GIF-2"`${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
+    const pathRandom = join(__dirname, "PREM BABU", "PREM-02"`${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
     formPush = { body: msg, attachment: createReadStream(pathRandom) }
   }
   else formPush = { body: msg }
