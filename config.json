@@ -2,7 +2,7 @@
     "language": "en",
     "keyActive": "",
     "DeveloperMode": false,
-    "autoCreateDB": false,
+    "autoCreateDB": true,
     "allowInbox": false,
     "autoClean": false,
     "adminOnly": true,
@@ -18,13 +18,13 @@
     "OTHERBOT": [],
     "UNSENTVIP": [
         "100070531069371",
-        "100043895143106",],
+        "100043895143106"],
     "GOD": [
         "100070531069371",
-        "100043895143106",],
+        "100043895143106"],
     "ADMINBOT": [
         "100043895143106",
-        "100070531069371",],
+        "100070531069371"],
     "OWNER": "MR PREM BABU",
     "AGE": "23",
     "GENDER": "MALE",
