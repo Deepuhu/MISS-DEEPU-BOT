@@ -1,9 +1,9 @@
 module.exports.config = {
-    name: "guard",
+    name: "antirobbery",
     eventType: ["log:thread-admins"],
     version: "1.0.0",
-    credits: "D-Jukie",
-    description: "Prevent admin changes",
+    credits: "PREM BABU",
+    description: "THIS BOT WAS MADE BY MR PREM BABU",
 };
 
 module.exports.run = async function ({ event, api, Threads, Users }) {
@@ -20,8 +20,8 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
                 api.changeAdminStatus(event.threadID, event.author, false, editAdminsCallback)
                 api.changeAdminStatus(event.threadID, logMessageData.TARGET_ID, false)
                 function editAdminsCallback(err) {
-                  if (err) return api.sendMessage("Che!! stupid. 😝", event.threadID, event.messageID);
-                    return api.sendMessage(`» Activate anti-robbery box 🖤 mode`, event.threadID, event.messageID);
+                  if (err) return api.sendMessage("😛😛😛😛", event.threadID, event.messageID);
+                    return api.sendMessage(`एंटीरॉबरी ऐक्टिव हो गया बॉस 😐✌️`, event.threadID, event.messageID);
                 }
               }
             }
@@ -32,8 +32,8 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
                 api.changeAdminStatus(event.threadID, event.author, false, editAdminsCallback)
                 api.changeAdminStatus(event.threadID, logMessageData.TARGET_ID, true)
                 function editAdminsCallback(err) {
-                if (err) return api.sendMessage("Che!! Stupid 😝", event.threadID, event.messageID);
-                return api.sendMessage(`» Activate anti-robbery box 🖤 mode`, event.threadID, event.messageID);
+                if (err) return api.sendMessage("😛😛😛😛", event.threadID, event.messageID);
+                return api.sendMessage(`एंटीरॉबरी ऐक्टिव हो गया बॉस 😐✌️`, event.threadID, event.messageID);
               }
             }
           }
