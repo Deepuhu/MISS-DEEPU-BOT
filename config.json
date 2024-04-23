@@ -2,25 +2,12 @@
     "language": "en",
     "keyActive": "",
     "DeveloperMode": false,
-    "autoCreateDB": true,
+    "autoCreateDB": false,
     "allowInbox": false,
     "autoClean": false,
     "adminOnly": true,
     "keyAdminOnly": "",
-    "commandDisabled": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    ],
+    "commandDisabled": [],
     "eventDisabled": [],
     "EMAIL": "",
     "PASSWORD": "",
@@ -28,34 +15,16 @@
     "api": "https://noobs-api.onrender.com/dipto",
     "BOTNAME": "TAKLU BABU",
     "PREFIX": "#",
-    "OTHERBOT": [
-        ""
-    ],
+    "OTHERBOT": [],
     "UNSENTVIP": [
         "100070531069371",
-        "100043895143106",
-        "",
-        "",
-        "",
-        "",
-        ""
-    ],
+        "100043895143106",],
     "GOD": [
         "100070531069371",
-        "100043895143106",
-        ""
-    ],
+        "100043895143106",],
     "ADMINBOT": [
         "100043895143106",
-        "100070531069371",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-    ],
+        "100070531069371",],
     "OWNER": "MR PREM BABU",
     "AGE": "23",
     "GENDER": "MALE",
@@ -107,7 +76,7 @@
     "adminUpdate": {
         "autoUnsend": true,
         "sendNoti": true,
-        "timeToUnsend": 10
+        "timeToUnsend": 5
     },
     "log": {
         "enable": true
