@@ -18,7 +18,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
   const fs = global.nodemodule["fs-extra"];
   const axios = global.nodemodule["axios"];
   let pathImg = __dirname + "/PREM-BABU/RANKUP/rankup.png";
-  let pathAvt1 = __dirname + "/cache/Avtmot.png";
+  let pathAvt1 = __dirname + "/cache/Avtmot2.png";
   var id1 = event.senderID;
   
 
