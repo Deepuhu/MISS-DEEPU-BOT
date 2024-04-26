@@ -1,4 +1,4 @@
-  module.exports.config = {
+module.exports.config = {
 	name: "PREM-RANKUP-2",
 	version: "3.3.1",
 	hasPermssion: 1,
