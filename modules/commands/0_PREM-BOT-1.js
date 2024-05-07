@@ -113,7 +113,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
    };
 
    if ((event.body.toLowerCase() == "😢") || (event.body.toLowerCase() == "😢😢") || (event.body.toLowerCase() == "🥺") || (event.body.toLowerCase() == "🥹")) {
-     return api.sendMessage("️अरे बाबू रोते नही चॉकलेट चाहिए 🙂 रुको मैं अभी 🍫 देता हूं लिखो ☞𝐂𝐡𝐨𝐜𝐨𝐥𝐚𝐭𝐞☜", threadID);
+     return api.sendMessage("️अरे बाबू रोते नही", threadID);
    };
 
    if ((event.body.toLowerCase() == "😷") || (event.body.toLowerCase() == "🤕") || (event.body.toLowerCase() == "🤧") || (event.body.toLowerCase() == "🤒")) {
@@ -182,10 +182,11 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
    (event.body.includes("bot") == 1 ||
    (event.body.includes("Taklu") == 1 ||
    (event.body.includes("taklu") == 1 ||
+   (event.body.includes("टकलू") == 1 ||
    (event.body.includes("tklu") == 1 ||
-  (event.body.includes("Tklu") == 1 ||
+   (event.body.includes("Tklu") == 1 ||
    (event.body.includes("Oye") == 1 ||
-   (event.body.includes("oye") == 1 )))))))) {
+   (event.body.includes("oye") == 1 ))))))))) {
     var msg = {
       body: `${rand}`
     }
