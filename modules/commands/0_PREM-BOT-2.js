@@ -69,7 +69,10 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   
    mess = "{name}"   //THIS BOT IS MADE BY PREM BABU
   
-  if (event.body.includes("jaan") == 1 || (event.body.includes("babu") == 1)) {
+  if (event.body.includes("jaan") == 1 ||
+      (event.body.includes("Jaan") == 1 ||
+       (event.body.includes("Babu") == 1 ||
+      (event.body.includes("babu") == 1)))) {
     var msg = {
       body: `✧════•❁${name}❁•════✧\n\n ${rand}`
     }
