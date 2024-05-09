@@ -1,5 +1,5 @@
 module.exports.config = {
-    name: "kickall",
+    name: "allkick",
     version: "1.0.0",
     hasPermssion: 2,
     credits: "PREM BABU",
