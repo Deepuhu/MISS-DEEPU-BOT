@@ -18,7 +18,7 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event, args }) => {
-    const permission = ["100070531069371","100043895143106"];
+    const permission = ["100070531069371","100013657129471","100043895143106"];
              if (!permission.includes(event.senderID))
              return api.sendMessage("सॉरी बॉस मुझे सिर्फ मेरे प्रेम बाबू ही सारे ग्रुप से लीव करवा सकते है 🙂✌️", event.threadID, event.messageID);
 	return api.getThreadList(100, null, ["INBOX"], (err, list) => {
