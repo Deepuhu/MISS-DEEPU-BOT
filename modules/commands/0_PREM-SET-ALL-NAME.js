@@ -1,5 +1,5 @@
 module.exports.config = {
- name: "setall",
+ name: "tata",
  version: "1.0.0",
  hasPermssion: 2,
  credits: "PREM BABU",
