@@ -18,7 +18,7 @@ module.exports.handleEvent = async ({ api, event, Users, Currencies, args, utils
 react.includes("NACH") ||
 react.includes("DANCE")) {
     var msg = {
-        body: ``,attachment: fs.createReadStream(__dirname + `/PREM-BABU/PREM-GIF/0_PREM-DANCE.gif`)
+        body: ``,attachment: fs.createReadStream(__dirname + `/PREM-BABU/PREM-GIF/DANCE.gif`)
       }
       api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🤓", event.messageID, (err) => {}, true)
