@@ -29,9 +29,9 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   ////////////////@prem-babu3608/////////////////
    mess = "{name}"
   
-  if (event.body.includes("Prem") == 1 || (event.body.includes("Takla") == 1)) {
+  if (event.body.includes("deepu") == 1 || (event.body.includes("DEEPU") == 1)) {
     var msg = {
-      body: `🐥 ${name} 🐥\n\n 👉${rand} \n\n   ❁ ══════ ❃ प्रेम बाबू ❃ ══════ ❁`
+      body: `🐥 ${name} 🐥\n\n 👉${rand} \n\n   ❁ ══════ ❃ दीपू बाबू ❃ ══════ ❁`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
