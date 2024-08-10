@@ -2,12 +2,12 @@ module.exports.config = {
 	name: "adminUpdate",
 	eventType: ["log:thread-admins","log:thread-name", "log:user-nickname", "log:thread-call","log:thread-icon", "log:thread-color", "log:link-status", "log:magic-words", "log:thread-approval-mode", "log:thread-poll"],
 	version: "1.0.1",
-	credits: "PREM BABU",
-	description: "THIS BOT WAS MADE BY MR PREM BABU",
+	credits: "𝘼𝙔𝙐𝙎𝙃 𝙎𝙃𝙐𝙆𝙇𝘼",
+	description: "Update group information quickly",
     envConfig: {
         autoUnsend: true,
         sendNoti: true,
-        timeToUnsend: 5
+        timeToUnsend: 10
     }
 };
 
@@ -22,14 +22,36 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
     try {
         let dataThread = (await getData(threadID)).threadInfo;
         switch (logMessageType) {
-           case "log:thread-admins": {
+            /*case "log:thread-admins": {
                 if (logMessageData.ADMIN_EVENT == "add_admin") {
                     dataThread.adminIDs.push({ id: logMessageData.TARGET_ID })
-                    api.sendMessage(`ले भईया ओम्म्फो एक और ठरकी इंसान इस ग्रुप का एडमिन बन गया 😏✌️`, threadID);
+                    if (global.configModule[this.config.name].sendNoti) api.sendMessage(`[⚜️] Đã cập nhật người dùng ${logMessageData.TARGET_ID} trở thành quản trị viên nhóm`, threadID, async (error, info) => {
+                        if (global.configModule[this.config.name].autoUnsend) {
+                            await new Promise(resolve => setTimeout(resolve, global.configModule[this.config.name].timeToUnsend * 1000));
+                            return api.unsendMessage(info.messageID);
+                        } else return;
+                    });
                 }
                 else if (logMessageData.ADMIN_EVENT == "remove_admin") {
                     dataThread.adminIDs = dataThread.adminIDs.filter(item => item.id != logMessageData.TARGET_ID);
-                    api.sendMessage(`ले भईया आया मजा तुम एडमिन के लायक ही नही थे 😆✌️`, threadID);
+                    if (global.configModule[this.config.name].sendNoti) api.sendMessage(`[⚜️] Đã cập nhật người dùng ${logMessageData.TARGET_ID} trở thành thành viên`, threadID, async (error, info) => {
+                        if (global.configModule[this.config.name].autoUnsend) {
+                            await new Promise(resolve => setTimeout(resolve, global.configModule[this.config.name].timeToUnsend * 1000));
+                            return api.unsendMessage(info.messageID);
+                        } else return;
+                    });
+                }
+                break;
+            }*/
+
+            case "log:thread-admins": {
+                if (logMessageData.ADMIN_EVENT == "add_admin") {
+                    dataThread.adminIDs.push({ id: logMessageData.TARGET_ID })
+                    api.sendMessage(`[⚜️] Breaking News [⚜️]\n» Dil Dehla Dene wali News ${logMessageData.TARGET_ID}  Ko Admin Bana Diya Gaya😒👈🏻`, threadID);
+                }
+                else if (logMessageData.ADMIN_EVENT == "remove_admin") {
+                    dataThread.adminIDs = dataThread.adminIDs.filter(item => item.id != logMessageData.TARGET_ID);
+                    api.sendMessage(`[⚜️] BreakinG News [⚜️]\n  • Bechare ko admin se remove Kardiya☹️ ${logMessageData.TARGET_ID}`, threadID);
                 }
                 break;
             }
@@ -61,11 +83,13 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
 
             case "log:thread-call": {
                 if (logMessageData.event == "group_call_started") {
-                    const name = await Users.getNameUser(logMessageData.caller_id);               else if (logMessageData.event == "group_call_ended") {
+                    const name = await Users.getNameUser(logMessageData.caller_id);
+                    api.sendMessage(`[⚜️] GROUP UPDATE [⚜️]\n» ${name} STARTED A ${(logMessageData.video) ? 'VIDEO ' : ''}CALL.`, threadID);
+                }
+                else if (logMessageData.event == "group_call_ended") {
                     const callDuration = logMessageData.call_duration;
 
                     //Transform seconds to hours, minutes and seconds
-               api.sendMessage
                     let hours = Math.floor(callDuration / 3600);
                     let minutes = Math.floor((callDuration - (hours * 3600)) / 60);
                     let seconds = callDuration - (hours * 3600) - (minutes * 60);
@@ -77,11 +101,13 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
 
                     const timeFormat = `${hours}:${minutes}:${seconds}`;
 
-                    api.sendMessage   
+                    api.sendMessage(`[⚜️] GROUP UPDATE [⚜️]\n» ${(logMessageData.video) ? 'VIDEO ' : ''}CALL HAS ENDED.\n» CALL DURATION: ${timeFormat}`, threadID);
+                    
                 }
                 else if (logMessageData.joining_user) {
                     const name = await Users.getNameUser(logMessageData.joining_user);
-                    api.sendMessage      }
+                    api.sendMessage(`[⚜️] GROUP UPDATE [⚜️]\n» ${name} JOINED THE ${(logMessageData.group_call_type == '1') ? 'VIDEO ' : ''}CALL.`, threadID);
+                }
                 break;
             }
         case "log:magic-words":
