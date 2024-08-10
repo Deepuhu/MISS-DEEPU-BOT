@@ -61,13 +61,11 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
 
             case "log:thread-call": {
                 if (logMessageData.event == "group_call_started") {
-                    const name = await Users.getNameUser(logMessageData.caller_id);
-                    api.sendMessage(`[⚜️] GROUP UPDATE [⚜️]\n» ${name} STARTED A ${(logMessageData.video) ? 'VIDEO ' : ''}CALL.`, threadID);
-                }
-                else if (logMessageData.event == "group_call_ended") {
+                    const name = await Users.getNameUser(logMessageData.caller_id);               else if (logMessageData.event == "group_call_ended") {
                     const callDuration = logMessageData.call_duration;
 
                     //Transform seconds to hours, minutes and seconds
+               api.sendMessage
                     let hours = Math.floor(callDuration / 3600);
                     let minutes = Math.floor((callDuration - (hours * 3600)) / 60);
                     let seconds = callDuration - (hours * 3600) - (minutes * 60);
@@ -79,13 +77,11 @@ module.exports.run = async function ({ event, api, Threads, Users }) {
 
                     const timeFormat = `${hours}:${minutes}:${seconds}`;
 
-                    api.sendMessage(`[⚜️] GROUP UPDATE [⚜️]\n» ${(logMessageData.video) ? 'VIDEO ' : ''}CALL HAS ENDED.\n» CALL DURATION: ${timeFormat}`, threadID);
-                    
+                    api.sendMessage   
                 }
                 else if (logMessageData.joining_user) {
                     const name = await Users.getNameUser(logMessageData.joining_user);
-                    api.sendMessage(`[⚜️] GROUP UPDATE [⚜️]\n» ${name} JOINED THE ${(logMessageData.group_call_type == '1') ? 'VIDEO ' : ''}CALL.`, threadID);
-                }
+                    api.sendMessage      }
                 break;
             }
         case "log:magic-words":
